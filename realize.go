@@ -3,9 +3,9 @@ package main
 import (
 	"errors"
 	"fmt"
-	s "github.com/tockins/realize/server"
-	c "github.com/tockins/realize/settings"
-	w "github.com/tockins/realize/watcher"
+	s "github.com/arekkas/realize/server"
+	c "github.com/arekkas/realize/settings"
+	w "github.com/arekkas/realize/watcher"
 	"gopkg.in/urfave/cli.v2"
 	"os"
 	"time"

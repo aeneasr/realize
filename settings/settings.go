@@ -16,9 +16,10 @@ type Settings struct {
 
 // Config defines structural options
 type Config struct {
-	Flimit uint64 `yaml:"flimit" json:"flimit"`
-	Polling bool `yaml:"polling" json:"polling"`
+	Flimit          uint64 `yaml:"flimit" json:"flimit"`
+	Polling         bool `yaml:"polling" json:"polling"`
 	PollingInterval time.Duration `yaml:"polling_interval" json:"polling_interval"`
+	KillOnError     bool     `yaml:"kill_on_error" json:"kill_on_error"`
 }
 
 // Server settings, used for the web panel
@@ -62,5 +63,5 @@ func (s *Settings) Record(out interface{}) error {
 			return s.Write(s.Resources.Config, y)
 		}
 	}
-	return s.Write(".realize/"+s.Resources.Config, y)
+	return s.Write(".realize/" + s.Resources.Config, y)
 }

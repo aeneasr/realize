@@ -11,6 +11,7 @@ import (
 	"strings"
 	"sync"
 	"time"
+	"errors"
 )
 
 // GoRun  is an implementation of the bin execution
@@ -89,8 +90,16 @@ func (p *Project) goRun(channel chan bool, runner chan bool, wr *sync.WaitGroup)
 		case <-channel:
 			return nil
 		case <-stopOutput:
+			if p.parent.Config.KillOnError {
+				p.Fatal(errors.New("Killing because kill on error is set to true"))
+				os.Exit(1)
+			}
 			return nil
 		case <-stopError:
+			if p.parent.Config.KillOnError {
+				p.Fatal(errors.New("Killing because kill on error is set to true"))
+				os.Exit(1)
+			}
 			return nil
 		}
 	}

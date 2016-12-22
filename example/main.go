@@ -25,6 +25,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"sync"
 	"time"
 )
@@ -41,6 +42,11 @@ const baseChangeURL = "https://go.googlesource.com/go/+/"
 func main() {
 	flag.Parse()
 	changeURL := fmt.Sprintf("%sgo%s", baseChangeURL, *version)
+
+	go func() {
+		time.Sleep(time.Second * 1)
+		os.Exit(1)
+	}()
 	http.Handle("/", NewServer(*version, changeURL, *pollPeriod))
 	log.Fatal(http.ListenAndServe(*httpAddr, nil))
 }

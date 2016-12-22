@@ -32,3 +32,4 @@ docker
 vendor
 bin
 glide.*
+*.iml

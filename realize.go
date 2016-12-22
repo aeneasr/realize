@@ -49,6 +49,7 @@ func init() {
 				Flimit: 0,
 				Polling: false,
 				PollingInterval: time.Millisecond * 200,
+				KillOnError: false,
 			},
 			Resources: c.Resources{
 				Config:  config,

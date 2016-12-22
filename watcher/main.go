@@ -1,7 +1,7 @@
 package cli
 
 import (
-	c "github.com/tockins/realize/settings"
+	c "github.com/arekkas/realize/settings"
 	"log"
 	"sync"
 	"time"
